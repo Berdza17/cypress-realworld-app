@@ -24,8 +24,15 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     
+    - name: Install Playwright dependencies
+      run: |
+        cd playwright
+        yarn install --frozen-lockfile
+    
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps ${{ matrix.browser }}
+      run: |
+        cd playwright
+        npx playwright install --with-deps ${{ matrix.browser }}
     
     - name: Start application
       run: |

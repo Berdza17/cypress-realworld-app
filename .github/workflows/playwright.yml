@@ -21,8 +21,15 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     
+    - name: Install Playwright dependencies
+      run: |
+        cd playwright
+        yarn install --frozen-lockfile
+    
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: |
+        cd playwright
+        npx playwright install --with-deps
     
     - name: Start application
       run: |
@@ -64,8 +71,15 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     
+    - name: Install Playwright dependencies
+      run: |
+        cd playwright
+        yarn install --frozen-lockfile
+    
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: |
+        cd playwright
+        npx playwright install --with-deps
     
     - name: Start application
       run: |
@@ -99,8 +113,15 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     
+    - name: Install Playwright dependencies
+      run: |
+        cd playwright
+        yarn install --frozen-lockfile
+    
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: |
+        cd playwright
+        npx playwright install --with-deps
     
     - name: Start application
       run: |
