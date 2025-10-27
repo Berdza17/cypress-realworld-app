@@ -8,7 +8,7 @@ test.describe('API Authentication Tests', () => {
     const user = DataFactory.getRandomTestUser();
     const userData = await loginByApi(page, user.username, user.password);
     
-    const apiUrl = 'http://localhost:3001';
+    const apiUrl = process.env.API_URL!;
     
     const checkAuthResponse = await page.request.get(`${apiUrl}/checkAuth`);
     expect(checkAuthResponse.status()).toBe(200);
@@ -24,7 +24,7 @@ test.describe('API Authentication Tests', () => {
   });
 
   test('should fail to access protected endpoints without login', async ({ page }) => {
-    const apiUrl = 'http://localhost:3001';
+    const apiUrl = process.env.API_URL!;
     
     const checkAuthResponse = await page.request.get(`${apiUrl}/checkAuth`);
     expect(checkAuthResponse.status()).toBe(401);
@@ -38,7 +38,7 @@ test.describe('API Authentication Tests', () => {
     const user = DataFactory.getRandomTestUser();
     const userData = await loginByApi(page, user.username, user.password);
     
-    const apiUrl = 'http://localhost:3001';
+    const apiUrl = process.env.API_URL!;
     const checkAuthResponse = await page.request.get(`${apiUrl}/checkAuth`);
     expect(checkAuthResponse.status()).toBe(200);
     

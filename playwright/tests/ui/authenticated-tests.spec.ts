@@ -22,7 +22,7 @@ test.describe('Authenticated User Tests', () => {
   });
 
   test('should access notifications when logged in', async ({ loggedInAsUser }) => {
-    const page = await loggedInAsUser('Heath93');
+    const page = await loggedInAsUser(process.env.TEST_USER_USERNAME!);
     const homePage = new HomePage(page);
     await homePage.navigateToNotifications();
     
@@ -30,7 +30,7 @@ test.describe('Authenticated User Tests', () => {
   });
 
   test('should access user settings when logged in', async ({ loggedInAsUser }) => {
-    const page = await loggedInAsUser('Dina20');
+    const page = await loggedInAsUser(process.env.TEST_USER_2_USERNAME!);
     const homePage = new HomePage(page);
     
     await homePage.navigateToUserSettings();
@@ -55,7 +55,7 @@ test.describe('Authenticated User Tests', () => {
   });
 
   test('should work with specific user', async ({ loggedInAsUser }) => {
-    const page = await loggedInAsUser('Heath93');
+    const page = await loggedInAsUser(process.env.TEST_USER_USERNAME!);
     const homePage = new HomePage(page);
     
     await homePage.navigateToPersonal();

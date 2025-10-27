@@ -1,22 +1,22 @@
-import { expect, Locator } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 
 export class SignupPage extends BasePage {
   // Selectors
-  readonly firstNameInput:Locator   ;
-  readonly lastNameInput:Locator;
-  readonly usernameInput:Locator;
-  readonly passwordInput:Locator;
-  readonly confirmPasswordInput:Locator;
-  readonly signupButton:Locator;
-  readonly firstNameHelperText:Locator;
-  readonly lastNameHelperText:Locator;
-  readonly usernameHelperText:Locator;
-  readonly passwordHelperText:Locator;
-  readonly confirmPasswordHelperText:Locator;
+  readonly firstNameInput: Locator;
+  readonly lastNameInput: Locator;
+  readonly usernameInput: Locator;
+  readonly passwordInput: Locator;
+  readonly confirmPasswordInput: Locator;
+  readonly signupButton: Locator;
+  readonly firstNameHelperText: Locator;
+  readonly lastNameHelperText: Locator;
+  readonly usernameHelperText: Locator;
+  readonly passwordHelperText: Locator;
+  readonly confirmPasswordHelperText: Locator;
 
-  constructor(page: any) {
+  constructor(page: Page) {
     super(page);
     this.firstNameInput = this.page.locator('#firstName');
     this.lastNameInput = this.page.locator('#lastName');

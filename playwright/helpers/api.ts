@@ -5,12 +5,12 @@ import { Page } from '@playwright/test';
  * Use this for API-only tests where frontend synchronization is not needed
  * @param page - The Playwright page instance
  * @param username - The username to login with
- * @param password - The password to login with (defaults to 's3cret')
+ * @param password - The password to login with (defaults to process.env.TEST_USER_PASSWORD)
  * @returns Promise<UserData> - The user data returned from the login API
  * @throws Error if login fails or session verification fails
  */
-export async function loginByApi(page: Page, username: string, password: string = 's3cret') {
-  const apiUrl = 'http://localhost:3001';
+export async function loginByApi(page: Page, username: string, password: string = process.env.TEST_USER_PASSWORD!) {
+  const apiUrl = process.env.API_URL;
   
   // Make API login request
   const response = await page.request.post(`${apiUrl}/login`, {

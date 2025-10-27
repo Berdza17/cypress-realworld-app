@@ -2,14 +2,21 @@ import { faker } from '@faker-js/faker';
 import { User } from '../models/User';
 
 /**
- * Hardcoded test users for consistent testing
+ * Test users loaded from environment variables
  */
 export const testUsers = {
-  heath: { firstName: 'Heath', lastName: 'Admin', username: 'Heath93', password: 's3cret' },
-  dina: { firstName: 'Dina', lastName: 'User', username: 'Dina20', password: 's3cret' },
-  arvilla: { firstName: 'Arvilla', lastName: 'Hegmann', username: 'Arvilla_Hegmann', password: 's3cret' },
-  reyes: { firstName: 'Reyes', lastName: 'Osinski', username: 'Reyes.Osinski', password: 's3cret' },
-  judah: { firstName: 'Judah', lastName: 'Dietrich', username: 'Judah_Dietrich50', password: 's3cret' },
+  heath: { 
+    firstName: process.env.TEST_USER_FIRST_NAME!, 
+    lastName: process.env.TEST_USER_LAST_NAME!, 
+    username: process.env.TEST_USER_USERNAME!, 
+    password: process.env.TEST_USER_PASSWORD! 
+  },
+  dina: { 
+    firstName: process.env.TEST_USER_2_FIRST_NAME!,
+    lastName: process.env.TEST_USER_2_LAST_NAME!, 
+    username: process.env.TEST_USER_2_USERNAME!, 
+    password: process.env.TEST_USER_2_PASSWORD! 
+  },
 } as const;
 
 /**
@@ -33,7 +40,7 @@ export class DataFactory {
     const finalFirstName = firstName || faker.person.firstName();
     const finalLastName = lastName || faker.person.lastName();
     const finalUsername = username || `${finalFirstName}${finalLastName}${faker.number.int({ min: 10, max: 99 })}`.toLowerCase();
-    const finalPassword = password || 's3cret';
+    const finalPassword = password || process.env.DEFAULT_USER_PASSWORD!;
 
     return {
       firstName: finalFirstName,

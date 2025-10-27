@@ -1,4 +1,4 @@
-import { expect, Locator } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class LoginPage extends BasePage {
@@ -11,7 +11,7 @@ export class LoginPage extends BasePage {
   readonly usernameHelperText:Locator;
   readonly passwordHelperText:Locator;
 
-  constructor(page: any) {
+  constructor(page: Page) {
     super(page);
     this.usernameInput = this.page.locator('#username');
     this.passwordInput = this.page.locator('#password');
@@ -41,7 +41,7 @@ export class LoginPage extends BasePage {
     }
     
     await this.loginButton.click();
-    await this.page.waitForURL('http://localhost:3000/');
+    await this.page.waitForURL(`${process.env.BASE_URL}/`);
   }
 
 

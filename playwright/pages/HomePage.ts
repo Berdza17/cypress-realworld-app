@@ -1,4 +1,4 @@
-import { expect, Locator } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class HomePage extends BasePage {
@@ -15,7 +15,7 @@ export class HomePage extends BasePage {
   readonly accountNumberInput: Locator;
   readonly bankAccountSubmit: Locator;
 
-  constructor(page: any) {
+  constructor(page: Page) {
     super(page);
     this.signOutButton = this.page.getByTestId('sidenav-signout');
     this.notificationsCount = this.page.getByTestId('nav-top-notifications-count');

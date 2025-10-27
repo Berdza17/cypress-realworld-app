@@ -4,12 +4,12 @@ import { DataFactory, testUsers } from '../helpers/dataFactory';
 /**
  * Performs UI login by navigating to signin page and filling credentials
  */
-async function loginUser(page: Page, username: string, password: string = 's3cret') {
-  await page.goto('http://localhost:3000/signin');
+async function loginUser(page: Page, username: string, password: string = process.env.DEFAULT_USER_PASSWORD!) {
+  await page.goto(process.env.BASE_URL!);
   await page.locator('#username').fill(username);
   await page.locator('#password').fill(password);
   await page.getByTestId('signin-submit').click();
-  await page.waitForURL('http://localhost:3000/');
+  await page.waitForURL(process.env.BASE_URL!);
 }
 
 export const test = base.extend<{
